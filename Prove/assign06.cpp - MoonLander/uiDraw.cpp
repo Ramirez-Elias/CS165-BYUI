@@ -1,14 +1,14 @@
 /***********************************************************************
- * Source File:
- *    User Interface Draw : put pixels on the screen
- * Author:
- *    Br. Helfrich
- * Summary:
- *    This is the code necessary to draw on the screen. We have a collection
- *    of procedural functions here because each draw function does not
- *    retain state. In other words, they are verbs (functions), not nouns
- *    (variables) or a mixture (objects)
- ************************************************************************/
+* Source File:
+*    User Interface Draw : put pixels on the screen
+* Author:
+*    Br. Helfrich
+* Summary:
+*    This is the code necessary to draw on the screen. We have a collection
+*    of procedural functions here because each draw function does not
+*    retain state. In other words, they are verbs (functions), not nouns
+*    (variables) or a mixture (objects)
+************************************************************************/
 
 #include <string>     // need you ask?
 #include <sstream>    // convert an integer into text
@@ -42,35 +42,35 @@ using namespace std;
 #define deg2rad(value) ((M_PI / 180) * (value))
 
 /*********************************************
- * NUMBER OUTLINES
- * We are drawing the text for score and things
- * like that by hand to make it look "old school."
- * These are how we render each individual charactger.
- * Note how -1 indicates "done".  These are paired
- * coordinates where the even are the x and the odd
- * are the y and every 2 pairs represents a point
- ********************************************/
+* NUMBER OUTLINES
+* We are drawing the text for score and things
+* like that by hand to make it look "old school."
+* These are how we render each individual charactger.
+* Note how -1 indicates "done".  These are paired
+* coordinates where the even are the x and the odd
+* are the y and every 2 pairs represents a point
+********************************************/
 const char NUMBER_OUTLINES[10][20] =
 {
-  {0, 0,  7, 0,   7, 0,  7,10,   7,10,  0,10,   0,10,  0, 0,  -1,-1, -1,-1},//0
-  {7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1},//1
-  {0, 0,  7, 0,   7, 0,  7, 5,   7, 5,  0, 5,   0, 5,  0,10,   0,10,  7,10},//2
-  {0, 0,  7, 0,   7, 0,  7,10,   7,10,  0,10,   4, 5,  7, 5,  -1,-1, -1,-1},//3
-  {0, 0,  0, 5,   0, 5,  7, 5,   7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1},//4
-  {7, 0,  0, 0,   0, 0,  0, 5,   0, 5,  7, 5,   7, 5,  7,10,   7,10,  0,10},//5
-  {7, 0,  0, 0,   0, 0,  0,10,   0,10,  7,10,   7,10,  7, 5,   7, 5,  0, 5},//6
-  {0, 0,  7, 0,   7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1},//7
-  {0, 0,  7, 0,   0, 5,  7, 5,   0,10,  7,10,   0, 0,  0,10,   7, 0,  7,10},//8
-  {0, 0,  7, 0,   7, 0,  7,10,   0, 0,  0, 5,   0, 5,  7, 5,  -1,-1, -1,-1} //9
+	{ 0, 0,  7, 0,   7, 0,  7,10,   7,10,  0,10,   0,10,  0, 0,  -1,-1, -1,-1 },//0
+	{ 7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1 },//1
+	{ 0, 0,  7, 0,   7, 0,  7, 5,   7, 5,  0, 5,   0, 5,  0,10,   0,10,  7,10 },//2
+	{ 0, 0,  7, 0,   7, 0,  7,10,   7,10,  0,10,   4, 5,  7, 5,  -1,-1, -1,-1 },//3
+	{ 0, 0,  0, 5,   0, 5,  7, 5,   7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1 },//4
+	{ 7, 0,  0, 0,   0, 0,  0, 5,   0, 5,  7, 5,   7, 5,  7,10,   7,10,  0,10 },//5
+	{ 7, 0,  0, 0,   0, 0,  0,10,   0,10,  7,10,   7,10,  7, 5,   7, 5,  0, 5 },//6
+	{ 0, 0,  7, 0,   7, 0,  7,10,  -1,-1, -1,-1,  -1,-1, -1,-1,  -1,-1, -1,-1 },//7
+	{ 0, 0,  7, 0,   0, 5,  7, 5,   0,10,  7,10,   0, 0,  0,10,   7, 0,  7,10 },//8
+	{ 0, 0,  7, 0,   7, 0,  7,10,   0, 0,  0, 5,   0, 5,  7, 5,  -1,-1, -1,-1 } //9
 };
 
 /************************************************************************
- * DRAW DIGIT
- * Draw a single digit in the old school line drawing style.  The
- * size of the glyph is 8x11 or x+(0..7), y+(0..10)
- *   INPUT  topLeft   The top left corner of the character
- *          digit     The digit we are rendering: '0' .. '9'
- *************************************************************************/
+* DRAW DIGIT
+* Draw a single digit in the old school line drawing style.  The
+* size of the glyph is 8x11 or x+(0..7), y+(0..10)
+*   INPUT  topLeft   The top left corner of the character
+*          digit     The digit we are rendering: '0' .. '9'
+*************************************************************************/
 void drawDigit(const Point & topLeft, char digit)
 {
 	// we better be only drawing digits
@@ -103,11 +103,11 @@ void drawDigit(const Point & topLeft, char digit)
 }
 
 /*************************************************************************
- * DRAW NUMBER
- * Display an integer on the screen using the 7-segment method
- *   INPUT  topLeft   The top left corner of the character
- *          digit     The digit we are rendering: '0' .. '9'
- *************************************************************************/
+* DRAW NUMBER
+* Display an integer on the screen using the 7-segment method
+*   INPUT  topLeft   The top left corner of the character
+*          digit     The digit we are rendering: '0' .. '9'
+*************************************************************************/
 void drawNumber(const Point & topLeft, int number)
 {
 	// our cursor, if you will. It will advance as we output digits
@@ -143,16 +143,16 @@ void drawNumber(const Point & topLeft, int number)
 
 
 /*************************************************************************
- * DRAW TEXT
- * Draw text using a simple bitmap font
- *   INPUT  topLeft   The top left corner of the text
- *          text      The text to be displayed
- ************************************************************************/
+* DRAW TEXT
+* Draw text using a simple bitmap font
+*   INPUT  topLeft   The top left corner of the text
+*          text      The text to be displayed
+************************************************************************/
 void drawText(const Point & topLeft, const char * text)
 {
 	void *pFont = GLUT_BITMAP_HELVETICA_12;  // also try _18
 
-	// prepare to draw the text from the top-left corner
+											 // prepare to draw the text from the top-left corner
 	glRasterPos2f(topLeft.getX(), topLeft.getY());
 
 	// loop through the text
@@ -161,15 +161,15 @@ void drawText(const Point & topLeft, const char * text)
 }
 
 /************************************************************************
- * DRAW POLYGON
- * Draw a POLYGON from a given location (center) of a given size (radius).
- *  INPUT   center   Center of the polygon
- *          radius   Size of the polygon
- *          points   How many points will we draw it.  Larger the number,
- *                   the more line segments we will use
- *          rotation True circles are rotation independent.  However, if you
- *                   are drawing a 3-sided polygon (triangle), this matters!
- *************************************************************************/
+* DRAW POLYGON
+* Draw a POLYGON from a given location (center) of a given size (radius).
+*  INPUT   center   Center of the polygon
+*          radius   Size of the polygon
+*          points   How many points will we draw it.  Larger the number,
+*                   the more line segments we will use
+*          rotation True circles are rotation independent.  However, if you
+*                   are drawing a 3-sided polygon (triangle), this matters!
+*************************************************************************/
 void drawPolygon(const Point & center, int radius, int points, int rotation)
 {
 	// begin drawing
@@ -193,14 +193,14 @@ void drawPolygon(const Point & center, int radius, int points, int rotation)
 
 
 /************************************************************************
- * ROTATE
- * Rotate a given point (point) around a given origin (center) by a given
- * number of degrees (angle).
- *    INPUT  point    The point to be moved
- *           center   The center point we will rotate around
- *           rotation Rotation in degrees
- *    OUTPUT point    The new position
- *************************************************************************/
+* ROTATE
+* Rotate a given point (point) around a given origin (center) by a given
+* number of degrees (angle).
+*    INPUT  point    The point to be moved
+*           center   The center point we will rotate around
+*           rotation Rotation in degrees
+*    OUTPUT point    The new position
+*************************************************************************/
 void rotate(Point & point, const Point & origin, int rotation)
 {
 	// because sine and cosine are expensive, we want to call them only once
@@ -222,11 +222,11 @@ void rotate(Point & point, const Point & origin, int rotation)
 }
 
 /************************************************************************
- * DRAW LINE
- * Draw a line on the screen from the beginning to the end.
- *   INPUT  begin     The position of the beginning of the line
- *          end       The position of the end of the line
- *************************************************************************/
+* DRAW LINE
+* Draw a line on the screen from the beginning to the end.
+*   INPUT  begin     The position of the beginning of the line
+*          end       The position of the end of the line
+*************************************************************************/
 void drawLine(const Point & begin, const Point & end,
 	float red, float green, float blue)
 {
@@ -244,9 +244,9 @@ void drawLine(const Point & begin, const Point & end,
 }
 
 /***********************************************************************
- * DRAW Lander
- * Draw a moon-lander spaceship on the screen at a given point
- ***********************************************************************/
+* DRAW Lander
+* Draw a moon-lander spaceship on the screen at a given point
+***********************************************************************/
 void drawLander(const Point & point)
 {
 	// ultra simple point
@@ -256,14 +256,14 @@ void drawLander(const Point & point)
 		int y;
 	} points[] =
 	{
-	   {-6, 0}, {-10,0}, {-8, 0}, {-8, 3},  // left foot
-	   {-5, 4}, {-5, 7}, {-8, 3}, {-5, 4},  // left leg
-	   {-1, 4}, {-3, 2}, { 3, 2}, { 1, 4}, {-1, 4}, // bottom
-	   { 5, 4}, { 5, 7}, {-5, 7}, {-3, 7},  // engine square
-	   {-6,10}, {-6,13}, {-3,16}, { 3,16},   // left of habitat
-	   { 6,13}, { 6,10}, { 3, 7}, { 5, 7},   // right of habitat
-	   { 5, 4}, { 8, 3}, { 5, 7}, { 5, 4},  // right leg
-	   { 8, 3}, { 8, 0}, {10, 0}, { 6, 0}   // right foot
+		{ -6, 0 },{ -10,0 },{ -8, 0 },{ -8, 3 },  // left foot
+		{ -5, 4 },{ -5, 7 },{ -8, 3 },{ -5, 4 },  // left leg
+		{ -1, 4 },{ -3, 2 },{ 3, 2 },{ 1, 4 },{ -1, 4 }, // bottom
+		{ 5, 4 },{ 5, 7 },{ -5, 7 },{ -3, 7 },  // engine square
+		{ -6,10 },{ -6,13 },{ -3,16 },{ 3,16 },   // left of habitat
+		{ 6,13 },{ 6,10 },{ 3, 7 },{ 5, 7 },   // right of habitat
+		{ 5, 4 },{ 8, 3 },{ 5, 7 },{ 5, 4 },  // right leg
+		{ 8, 3 },{ 8, 0 },{ 10, 0 },{ 6, 0 }   // right foot
 	};
 
 	// draw it
@@ -280,9 +280,9 @@ void drawLander(const Point & point)
 
 
 /***********************************************************************
- * DRAW Lander Flame
- * Draw the flames coming out of a moonlander for thrust
- ***********************************************************************/
+* DRAW Lander Flame
+* Draw the flames coming out of a moonlander for thrust
+***********************************************************************/
 void drawLanderFlames(const Point & point,
 	bool bottom,
 	bool left,
@@ -297,7 +297,7 @@ void drawLanderFlames(const Point & point,
 
 	int iFlame = random(0, 3);  // so the flame flickers
 
-	// draw it
+								// draw it
 	glBegin(GL_LINE_LOOP);
 	glColor3f(1.0 /* red % */, 0.0 /* green % */, 0.0 /* blue % */);
 
@@ -306,9 +306,9 @@ void drawLanderFlames(const Point & point,
 	{
 		PT points[3][3] =
 		{
-		   { {-5,  -6}, { 0, -1}, { 3, -10} },
-		   { {-3,  -6}, {-1, -2}, { 0, -15} },
-		   { { 2, -12}, { 1,  0}, { 6,  -4} }
+			{ { -5,  -6 },{ 0, -1 },{ 3, -10 } },
+			{ { -3,  -6 },{ -1, -2 },{ 0, -15 } },
+			{ { 2, -12 },{ 1,  0 },{ 6,  -4 } }
 		};
 
 		glVertex2f(point.getX() - 2, point.getY() + 2);
@@ -323,9 +323,9 @@ void drawLanderFlames(const Point & point,
 	{
 		PT points[3][3] =
 		{
-		   { {10, 14}, { 8, 12}, {12, 12} },
-		   { {12, 10}, { 8, 10}, {10,  8} },
-		   { {14, 11}, {14, 11}, {14, 11} }
+			{ { 10, 14 },{ 8, 12 },{ 12, 12 } },
+			{ { 12, 10 },{ 8, 10 },{ 10,  8 } },
+			{ { 14, 11 },{ 14, 11 },{ 14, 11 } }
 		};
 
 		glVertex2f(point.getX() + 6, point.getY() + 12);
@@ -340,9 +340,9 @@ void drawLanderFlames(const Point & point,
 	{
 		PT points[3][3] =
 		{
-		   { {-10, 14}, { -8, 12}, {-12, 12} },
-		   { {-12, 10}, { -8, 10}, {-10,  8} },
-		   { {-14, 11}, {-14, 11}, {-14, 11} }
+			{ { -10, 14 },{ -8, 12 },{ -12, 12 } },
+			{ { -12, 10 },{ -8, 10 },{ -10,  8 } },
+			{ { -14, 11 },{ -14, 11 },{ -14, 11 } }
 		};
 
 		glVertex2f(point.getX() - 6, point.getY() + 12);
@@ -358,12 +358,12 @@ void drawLanderFlames(const Point & point,
 
 
 /******************************************************************
- * RANDOM
- * This function generates a random number.
- *
- *    INPUT:   min, max : The number of values (min <= num < max)
- *    OUTPUT   <return> : Return the integer
- ****************************************************************/
+* RANDOM
+* This function generates a random number.
+*
+*    INPUT:   min, max : The number of values (min <= num < max)
+*    OUTPUT   <return> : Return the integer
+****************************************************************/
 int random(int min, int max)
 {
 	assert(min < max);
@@ -374,12 +374,12 @@ int random(int min, int max)
 }
 
 /******************************************************************
- * RANDOM
- * This function generates a random number.
- *
- *    INPUT:   min, max : The number of values (min <= num < max)
- *    OUTPUT   <return> : Return the double
- ****************************************************************/
+* RANDOM
+* This function generates a random number.
+*
+*    INPUT:   min, max : The number of values (min <= num < max)
+*    OUTPUT   <return> : Return the double
+****************************************************************/
 double random(double min, double max)
 {
 	assert(min <= max);
@@ -392,14 +392,14 @@ double random(double min, double max)
 
 
 /************************************************************************
- * DRAW RECTANGLE
- * Draw a rectangle on the screen centered on a given point (center) of
- * a given size (width, height), and at a given orientation (rotation)
- *  INPUT  center    Center of the rectangle
- *         width     Horizontal size
- *         height    Vertical size
- *         rotation  Orientation
- *************************************************************************/
+* DRAW RECTANGLE
+* Draw a rectangle on the screen centered on a given point (center) of
+* a given size (width, height), and at a given orientation (rotation)
+*  INPUT  center    Center of the rectangle
+*         width     Horizontal size
+*         height    Vertical size
+*         rotation  Orientation
+*************************************************************************/
 void drawRect(const Point & center, int width, int height, int rotation)
 {
 	Point tl(false /*check*/); // top left
@@ -407,7 +407,7 @@ void drawRect(const Point & center, int width, int height, int rotation)
 	Point bl(false /*check*/); // bottom left
 	Point br(false /*check*/); // bottom right
 
-	//Top Left point
+							   //Top Left point
 	tl.setX(center.getX() - (width / 2));
 	tl.setY(center.getY() + (height / 2));
 
@@ -440,11 +440,11 @@ void drawRect(const Point & center, int width, int height, int rotation)
 }
 
 /************************************************************************
- * DRAW CIRCLE
- * Draw a circle from a given location (center) of a given size (radius).
- *  INPUT   center   Center of the circle
- *          radius   Size of the circle
- *************************************************************************/
+* DRAW CIRCLE
+* Draw a circle from a given location (center) of a given size (radius).
+*  INPUT   center   Center of the circle
+*          radius   Size of the circle
+*************************************************************************/
 void drawCircle(const Point & center, int radius)
 {
 	assert(radius > 1.0);
@@ -463,10 +463,10 @@ void drawCircle(const Point & center, int radius)
 }
 
 /************************************************************************
- * DRAW DOT
- * Draw a single point on the screen, 2 pixels by 2 pixels
- *  INPUT point   The position of the dow
- *************************************************************************/
+* DRAW DOT
+* Draw a single point on the screen, 2 pixels by 2 pixels
+*  INPUT point   The position of the dow
+*************************************************************************/
 void drawDot(const Point & point)
 {
 	// Get ready, get set...
@@ -483,12 +483,12 @@ void drawDot(const Point & point)
 }
 
 /************************************************************************
- * DRAW Tough Bird
- * Draw a tough bird on the screen
- *  INPUT point   The position of the sacred
- *        radius  The size of the bird
- *        hits    How many its remaining to kill the bird
- *************************************************************************/
+* DRAW Tough Bird
+* Draw a tough bird on the screen
+*  INPUT point   The position of the sacred
+*        radius  The size of the bird
+*        hits    How many its remaining to kill the bird
+*************************************************************************/
 void drawToughBird(const Point & center, float radius, int hits)
 {
 	assert(radius > 1.0);
@@ -532,11 +532,11 @@ void drawToughBird(const Point & center, float radius, int hits)
 }
 
 /************************************************************************
- * DRAW Sacred Bird
- * Draw a sacred bird on the screen
- *  INPUT point   The position of the sacred
- *        radius  The size of the bird
- *************************************************************************/
+* DRAW Sacred Bird
+* Draw a sacred bird on the screen
+*  INPUT point   The position of the sacred
+*        radius  The size of the bird
+*************************************************************************/
 void drawSacredBird(const Point & center, float radius)
 {
 	// handle auto-rotation
@@ -567,8 +567,8 @@ void drawSacredBird(const Point & center, float radius)
 }
 
 /**********************************************************************
- * DRAW SMALL ASTEROID
- **********************************************************************/
+* DRAW SMALL ASTEROID
+**********************************************************************/
 void drawSmallAsteroid(const Point & center, int rotation)
 {
 	// ultra simple point
@@ -578,9 +578,9 @@ void drawSmallAsteroid(const Point & center, int rotation)
 		int y;
 	} points[] =
 	{
-	   {-5, 9},  {4, 8},   {8, 4},
-	   {8, -5},  {-2, -8}, {-2, -3},
-	   {-8, -4}, {-8, 4},  {-5, 10}
+		{ -5, 9 },{ 4, 8 },{ 8, 4 },
+		{ 8, -5 },{ -2, -8 },{ -2, -3 },
+		{ -8, -4 },{ -8, 4 },{ -5, 10 }
 	};
 
 	glBegin(GL_LINE_STRIP);
@@ -595,8 +595,8 @@ void drawSmallAsteroid(const Point & center, int rotation)
 }
 
 /**********************************************************************
- * DRAW MEDIUM ASTEROID
- **********************************************************************/
+* DRAW MEDIUM ASTEROID
+**********************************************************************/
 void drawMediumAsteroid(const Point & center, int rotation)
 {
 	// ultra simple point
@@ -606,10 +606,10 @@ void drawMediumAsteroid(const Point & center, int rotation)
 		int y;
 	} points[] =
 	{
-	   {2, 8},    {8, 15},    {12, 8},
-	   {6, 2},    {12, -6},   {2, -15},
-	   {-6, -15}, {-14, -10}, {-15, 0},
-	   {-4, 15},  {2, 8}
+		{ 2, 8 },{ 8, 15 },{ 12, 8 },
+		{ 6, 2 },{ 12, -6 },{ 2, -15 },
+		{ -6, -15 },{ -14, -10 },{ -15, 0 },
+		{ -4, 15 },{ 2, 8 }
 	};
 
 	glBegin(GL_LINE_STRIP);
@@ -624,8 +624,8 @@ void drawMediumAsteroid(const Point & center, int rotation)
 }
 
 /**********************************************************************
- * DRAW LARGE ASTEROID
- **********************************************************************/
+* DRAW LARGE ASTEROID
+**********************************************************************/
 void drawLargeAsteroid(const Point & center, int rotation)
 {
 	// ultra simple point
@@ -635,10 +635,10 @@ void drawLargeAsteroid(const Point & center, int rotation)
 		int y;
 	} points[] =
 	{
-	   {0, 12},    {8, 20}, {16, 14},
-	   {10, 12},   {20, 0}, {0, -20},
-	   {-18, -10}, {-20, -2}, {-20, 14},
-	   {-10, 20},  {0, 12}
+		{ 0, 12 },{ 8, 20 },{ 16, 14 },
+		{ 10, 12 },{ 20, 0 },{ 0, -20 },
+		{ -18, -10 },{ -20, -2 },{ -20, 14 },
+		{ -10, 20 },{ 0, 12 }
 	};
 
 	glBegin(GL_LINE_STRIP);
@@ -654,11 +654,11 @@ void drawLargeAsteroid(const Point & center, int rotation)
 
 
 /************************************************************************
- * DRAW Ship
- * Draw a spaceship on the screen
- *  INPUT point   The position of the ship
- *        angle   Which direction it is ponted
- *************************************************************************/
+* DRAW Ship
+* Draw a spaceship on the screen
+*  INPUT point   The position of the ship
+*        angle   Which direction it is ponted
+*************************************************************************/
 void drawShip(const Point & center, int rotation, bool thrust)
 {
 	// ultra simple point
@@ -671,7 +671,7 @@ void drawShip(const Point & center, int rotation, bool thrust)
 	// draw the ship                                                 
 	const PT pointsShip[] =
 	{ // top   r.wing   r.engine l.engine  l.wing    top
-	   {0, 6}, {6, -6}, {2, -3}, {-2, -3}, {-6, -6}, {0, 6}
+		{ 0, 6 },{ 6, -6 },{ 2, -3 },{ -2, -3 },{ -6, -6 },{ 0, 6 }
 	};
 
 	glBegin(GL_LINE_STRIP);
@@ -689,9 +689,9 @@ void drawShip(const Point & center, int rotation, bool thrust)
 	{
 		const PT pointsFlame[3][5] =
 		{
-		   { {-2, -3}, {-2, -13}, { 0, -6}, { 2, -13}, {2, -3} },
-		   { {-2, -3}, {-4,  -9}, {-1, -7}, { 1, -14}, {2, -3} },
-		   { {-2, -3}, {-1, -14}, { 1, -7}, { 4,  -9}, {2, -3} }
+			{ { -2, -3 },{ -2, -13 },{ 0, -6 },{ 2, -13 },{ 2, -3 } },
+			{ { -2, -3 },{ -4,  -9 },{ -1, -7 },{ 1, -14 },{ 2, -3 } },
+			{ { -2, -3 },{ -1, -14 },{ 1, -7 },{ 4,  -9 },{ 2, -3 } }
 		};
 
 		glBegin(GL_LINE_STRIP);
@@ -708,3 +708,5 @@ void drawShip(const Point & center, int rotation, bool thrust)
 		glEnd();
 	}
 }
+
+

@@ -1,12 +1,12 @@
 /***********************************************************************
- * Header File:
- *    Point : The representation of a position on the screen
- * Author:
- *    Br. Helfrich
- * Summary:
- *    Everything we need to know about a location on the screen, including
- *    the location and the bounds.
- ************************************************************************/
+* Header File:
+*    Point : The representation of a position on the screen
+* Author:
+*    Br. Helfrich
+* Summary:
+*    Everything we need to know about a location on the screen, including
+*    the location and the bounds.
+************************************************************************/
 
 
 #ifndef POINT_H
@@ -14,10 +14,10 @@
 
 #include <iostream>
 
- /*********************************************
-  * POINT
-  * A single position.
-  *********************************************/
+/*********************************************
+* POINT
+* A single position.
+*********************************************/
 class Point
 {
 public:

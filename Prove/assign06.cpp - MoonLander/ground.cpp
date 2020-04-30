@@ -1,17 +1,17 @@
 /***********************************************************************
- * Implementation File:
- *    GROUND : A class representing the lunar landscape
- * Author:
- *    Br. Helfrich
- * Summary:
- *    Everything you needed to know about the ground but were afraid to ask
- ************************************************************************/
+* Implementation File:
+*    GROUND : A class representing the lunar landscape
+* Author:
+*    Br. Helfrich
+* Summary:
+*    Everything you needed to know about the ground but were afraid to ask
+************************************************************************/
 
 #include "ground.h"
 
- /********************************************
-  * GROUND :: CONSTRUCTOR
-  ********************************************/
+/********************************************
+* GROUND :: CONSTRUCTOR
+********************************************/
 Ground::Ground(Point tl, Point br) : topLeft(tl), bottomRight(br)
 {
 	Point pt; // create a point to get the dimensions
@@ -23,10 +23,10 @@ Ground::Ground(Point tl, Point br) : topLeft(tl), bottomRight(br)
 }
 
 /*********************************************
- * GROUND :: GET GROUND HEIGHT
- * For a given x position, determine the height
- * of the ground at that point;
- *********************************************/
+* GROUND :: GET GROUND HEIGHT
+* For a given x position, determine the height
+* of the ground at that point;
+*********************************************/
 Point Ground::getGround(const Point & ptSrc) const
 {
 	Point pt(ptSrc);
@@ -49,9 +49,9 @@ Point Ground::getGround(const Point & ptSrc) const
 
 
 /***************************************
- * GROUND :: DRAW
- * display the ground on the screen
- ***************************************/
+* GROUND :: DRAW
+* display the ground on the screen
+***************************************/
 void Ground::draw() const
 {
 	// set the initial position at the platform location
@@ -84,9 +84,9 @@ void Ground::draw() const
 }
 
 /*********************************************
- * GROUND :: IS ABOVE GROUND
- * did we leave the screen or enter the ground?
- *********************************************/
+* GROUND :: IS ABOVE GROUND
+* did we leave the screen or enter the ground?
+*********************************************/
 bool Ground::isAboveGround(const Point & point) const
 {
 	return point.getX() > topLeft.getX() &&
@@ -96,9 +96,9 @@ bool Ground::isAboveGround(const Point & point) const
 }
 
 /*****************************************
- * GROUND :: GENERATE GROUND
- * generate a new terrain
- *******************************************/
+* GROUND :: GENERATE GROUND
+* generate a new terrain
+*******************************************/
 void Ground::generateGround()
 {
 	Point pt;                              // to get the screen size

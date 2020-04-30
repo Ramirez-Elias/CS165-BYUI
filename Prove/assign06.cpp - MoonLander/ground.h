@@ -1,11 +1,11 @@
 /***********************************************************************
- * Header File:
- *    GROUND : A class representing the lunar landscape
- * Author:
- *    Br. Helfrich
- * Summary:
- *    Everything you needed to know about the ground but were afraid to ask
- ************************************************************************/
+* Header File:
+*    GROUND : A class representing the lunar landscape
+* Author:
+*    Br. Helfrich
+* Summary:
+*    Everything you needed to know about the ground but were afraid to ask
+************************************************************************/
 
 #ifndef GROUND_H
 #define GROUND_H
@@ -15,10 +15,10 @@
 #define BUMPY       0.5    // how bumpy is the ground
 #define PLATFORM    31     // the width of the platform
 
- /********************************************
-  * GROUND
-  * Terra-firma, except made of cheese
-  ********************************************/
+/********************************************
+* GROUND
+* Terra-firma, except made of cheese
+********************************************/
 class Ground
 {
 public:
@@ -60,3 +60,4 @@ private:
 
 
 #endif
+

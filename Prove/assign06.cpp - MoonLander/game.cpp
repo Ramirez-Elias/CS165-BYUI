@@ -1,14 +1,14 @@
 /*************************************************************
- * File: game.cpp
- * Author: Br. Burton
- *
- * Description: Contains the implementations of the
- *  method bodies for the game class.
- *
- * Please DO NOT share this code with other students from
- *  other sections or other semesters. They may not receive
- *  the same code that you are receiving.
- *************************************************************/
+* File: game.cpp
+* Author: Br. Burton
+*
+* Description: Contains the implementations of the
+*  method bodies for the game class.
+*
+* Please DO NOT share this code with other students from
+*  other sections or other semesters. They may not receive
+*  the same code that you are receiving.
+*************************************************************/
 
 #include "game.h"
 
@@ -18,10 +18,10 @@
 #include "ground.h"
 #include "lander.h"
 
- /******************************************
-  * GAME :: JUST LANDED
-  * Did we land successfully?
-  ******************************************/
+/******************************************
+* GAME :: JUST LANDED
+* Did we land successfully?
+******************************************/
 bool Game::justLanded() const
 {
 	bool landed = false;
@@ -54,9 +54,9 @@ bool Game::justLanded() const
 }
 
 /***************************************
- * GAME :: ADVANCE
- * advance the game one unit of time
- ***************************************/
+* GAME :: ADVANCE
+* advance the game one unit of time
+***************************************/
 void Game::advance()
 {
 	if (lander.isAlive() && !lander.isLanded())
@@ -80,9 +80,9 @@ void Game::advance()
 }
 
 /***************************************
- * GAME :: HANDLE INPUT
- * accept input from the user
- ***************************************/
+* GAME :: HANDLE INPUT
+* accept input from the user
+***************************************/
 void Game::handleInput(const Interface & ui)
 {
 	if (lander.isAlive() && !lander.isLanded())
@@ -106,9 +106,9 @@ void Game::handleInput(const Interface & ui)
 }
 
 /*********************************************
- * GAME :: DRAW
- * Draw everything on the screen
- *********************************************/
+* GAME :: DRAW
+* Draw everything on the screen
+*********************************************/
 void Game::draw(const Interface & ui)
 {
 	lander.draw();
@@ -137,3 +137,4 @@ void Game::draw(const Interface & ui)
 	// draw ground
 	ground.draw();
 }
+

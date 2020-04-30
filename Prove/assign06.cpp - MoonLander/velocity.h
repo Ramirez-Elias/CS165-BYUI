@@ -1,19 +1,30 @@
-/*********************************************
-* Header file:
-*    velocity.h
-* Author:
-*    Elias D Ramirez
-* Summary:
-*    This module will create a velocity class that 
-*    will held the value to be passed to Point 
-*    class in order to move the lander on the screen
-*    and apply inertia to moves.
-**********************************************/
-#ifndef velocity_h
-#define velocity_h
-/*********************************************
-* Velocity Class.
-*********************************************/
 
+#ifndef VELOCITY_H
+#define VELOCITY_H
+
+
+class Velocity
+{
+private:
+
+	float dx;
+	float dy;
+
+public:
+
+	//CONSTRUCTORS
+	Velocity() {}
+	Velocity(float dx, float dy) {};
+
+	//SETTERS
+	void setDx(float dx) { this->dx = dx; }
+	void setDy(float dy) { this->dy = dy; }
+	void setV(float newDx, float newDy);
+
+	//GETTERS
+	float getDx() const { return dx; }
+	float getDy() const { return dy; }
+
+};
 
 #endif
