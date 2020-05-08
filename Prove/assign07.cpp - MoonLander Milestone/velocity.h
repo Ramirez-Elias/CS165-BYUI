@@ -2,7 +2,7 @@
 * Header file:
 *    velocity.h
 * Author:
-*    Elias D Ramirez
+*     Elias Ramirez
 * Summary:
 *    This module will create a velocity class that 
 *    will held the value to be passed to Point 

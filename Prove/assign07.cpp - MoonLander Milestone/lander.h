@@ -2,7 +2,7 @@
  * Header File:
  *    Lander : The representation of a position on the screen
  * Author:
- *    
+ *     Elias Ramirez
  * Summary:
  *    Everything we need to know about a location on the screen, including
  *    the location and the bounds.
@@ -31,7 +31,7 @@ private:
 	bool m_canTrust;
 	float m_gravity;
 public:
-	Lander(): position(), velocity(), m_isAlive(true), m_isLanded(false), m_fuel (500), m_canTrust(true) {};
+	Lander(): position(), velocity(), m_isAlive(true), m_isLanded(false), m_canTrust(true) {};
 	Point getPoint() const;
 	Velocity getVelocity() const;
 	bool isAlive();

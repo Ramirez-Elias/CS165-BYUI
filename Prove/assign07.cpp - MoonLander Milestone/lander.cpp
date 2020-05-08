@@ -2,7 +2,7 @@
  * Implementation File:
  *    LANDER : A class representing the lunar landscape
  * Author:
- *    Br. Helfrich
+ *    Elias Ramirez
  * Summary:
  *    Everything you needed to know about the lander but were afraid to ask
  ************************************************************************/
@@ -49,34 +49,68 @@ void Lander::setFuel(int fuel)
 void Lander::applyGravity(float gravity)
 {
 	//Gravity on the moon can be modeled as 0.1 pixels per frame.
-	position.setY(position.getY() - 0.1);
-	
-	
-
+	velocity.setDy(velocity.getDy() - 0.1);
 }
 void Lander::applyThrustLeft()
 {
-	//The left and right thrust amounts are 0.1 pixels per frame, and consume 1 unit of fuel.
-	velocity.setDx(velocity.getDx() + 0.1);
-	position.setX(position.getX() + 0.1);
-	setFuel(getFuel() - 1);
+	//	//The lander should not continue to move after crashing or landing.
+	if (canThrust())
+	{
+		//The left and right thrust amounts are 0.1 pixels per frame, and consume
+		// 1 unit of fuel.
+		velocity.setDx(velocity.getDx() + 0.1);
+		setFuel(getFuel() - 1);
+	}
 }
 void Lander::applyThrustRight()
 {
-	//The left and right thrust amounts are 0.1 pixels per frame, and consume 1 unit of fuel.
-	position.setX(position.getX() - 0.1);
-	setFuel(getFuel() - 1);
+	//The lander should not continue to move after crashing or landing.
+	if (canThrust())
+	{
+		//The left and right thrust amounts are 0.1 pixels per frame, and consume 
+		// 1 unit of fuel.
+		velocity.setDx(velocity.getDx() - 0.1);
+		setFuel(getFuel() - 1);
+	}
 }
 void Lander::applyThrustBottom()
 {
-	//The upward thrust (caused by the down arrow) amount is 0.3 pixels per frame, and consumes 3 units of fuel.
-	position.setY(position.getY() + 0.3);
-	setFuel(getFuel() - 3);
+	//The lander should not continue to move after crashing or landing.
+	if (canThrust())
+	{
+		//The upward thrust (caused by the down arrow) amount is 0.3 pixels per frame, and
+		//consumes 3 units of fuel.
+		velocity.setDy(velocity.getDy() + 0.3);
+		setFuel(getFuel() - 3);
+	}
 }
 void Lander::advance()
 {
+	//check fuel
+	if (getFuel()== 0)
+	{
+		//if empty, then it can't thrust
+		this->m_canTrust = false;
+	}
 
-}
+	//check if alive
+	if (isAlive())
+	{
+		//check if landed?
+		if (isLanded())
+		{
+			//do nothing (is alive and landed)
+		}
+		else
+		{
+			//The lander should have inertia, in other words, once it begins moving left, 
+			//it should continue moving left unless additional thrust is made.
+			position.addX(velocity.getDx());
+			position.addY(velocity.getDy());
+		}
+		}
+	}
+
 void Lander::draw()
 {
 	//Requierements

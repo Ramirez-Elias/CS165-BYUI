@@ -1,6 +1,6 @@
 /*************************************************************
 * File: velocity.cpp
-* Author: Elias D Ramirez
+* Author:  Elias Ramirez
 *
 * Description: Contains the implementations of the
 *  method bodies for the velocity class.
