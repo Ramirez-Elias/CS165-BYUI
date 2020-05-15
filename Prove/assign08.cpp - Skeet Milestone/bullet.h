@@ -1,26 +1,21 @@
-#include "point.h"
+#include "flyingObjects.h"
 #ifndef BULLET_H
 #define BULLET_H
+#define BULLET_SPEED 10.0
 
 /*********************************************
  * Bullet
  *********************************************/
-class Bullet
+class Bullet : public FlyingObject
 {
 public:
-	bool isAlive() const;
-
-	void advance();
-
-	Point getPoint();
-
-	void kill();
-
-	void draw();
+	Bullet();
+	~Bullet() {}
 	void fire(Point point, float position);
-
+	virtual void draw();
 private:
 
 };
+
 
 #endif

@@ -13,9 +13,11 @@
 
 #ifndef GAME_H
 #define GAME_H
-
+#include <iostream>
 #include <vector>
-
+#include"flyingObjects.h"
+#include "bird.h"
+#include "bullet.h"
 #include "uiDraw.h"
 #include "uiInteract.h"
 #include "point.h"
@@ -73,7 +75,7 @@ private:
 	std::vector<Bullet> bullets;
 
 	// TODO: declare your bird here (e.g., "Bird * bird;")
-
+	Bird * bird;
 
 	/*************************************************
 	 * Private methods to help with the game logic.

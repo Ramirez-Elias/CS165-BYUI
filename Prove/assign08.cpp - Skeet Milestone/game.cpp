@@ -12,9 +12,6 @@
 
 #include "game.h"
 
-#include "uiDraw.h"
-#include "uiInteract.h"
-#include "point.h"
 
 #include <vector>
 using namespace std;
@@ -32,7 +29,8 @@ Game::Game(Point tl, Point br)
 	score = 0;
 
 	// TODO: Set your bird pointer to a good initial value (e.g., NULL)
-
+	Bird* bird = NULL;
+	
 }
 
 /****************************************
@@ -42,7 +40,8 @@ Game :: ~Game()
 {
 	// TODO: Check to see if there is currently a bird allocated
 	//       and if so, delete it.
-
+	if (bird->isAlive())
+		delete bird;
 }
 
 /***************************************
@@ -94,7 +93,7 @@ void Game::advanceBird()
 	if (bird == NULL)
 	{
 		// there is no bird right now, possibly create one
-
+		Bird* bird = NULL;
 		// "resurrect" it will some random chance
 		if (random(0, 30) == 0)
 		{
@@ -130,7 +129,7 @@ Bird* Game::createBird()
 	Bird* newBird = NULL;
 
 	// TODO: Fill this in
-
+	
 
 	return newBird;
 }
@@ -258,7 +257,7 @@ void Game::handleInput(const Interface & ui)
 void Game::draw(const Interface & ui)
 {
 	// draw the bird
-
+	
 	// TODO: Check if you have a valid bird and if it's alive
 	// then call it's draw method
 

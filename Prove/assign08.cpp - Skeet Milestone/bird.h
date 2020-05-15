@@ -1,27 +1,64 @@
-#include "point.h"
+/***********************************************************************
+* Header File:
+*    bird
+* Author:
+*    Elias Ramirez
+* Summary:
+************************************************************************/
+#include "flyingObjects.h"
 #ifndef BIRD_H
 #define BIRD_H
 
 /*********************************************
- *
+ * Bird Base Class
  *********************************************/
-class Bird
+class Bird : public FlyingObject
 {
 public:
-	bool isAlive() const;
-
-	void advance();
-
-	Point getPoint();
-
-	void kill();
-
-	void draw();
-
+	Bird();
+	~Bird() {}
 	int hit();
-
 private:
 
 };
+
+/*********************************************
+ * BirdStandard Class
+ *********************************************/
+class BirdStandard: public Bird
+{
+public:
+	BirdStandard() {}
+	~BirdStandard() {}
+	virtual void draw();
+	virtual void advance(Bird & BirdStandard) {};
+private:
+
+};
+
+/*********************************************
+ * BirdTough Class
+ *********************************************/
+class BirdTough : public Bird
+{
+public:
+	BirdTough() {}
+	~BirdTough() {}
+private:
+
+};
+
+/*********************************************
+ * BirdSacred Class
+ *********************************************/
+class BirdSacred : public Bird
+{
+public:
+	BirdSacred(){}
+	~BirdSacred() {}
+private:
+
+};
+
 
 #endif
