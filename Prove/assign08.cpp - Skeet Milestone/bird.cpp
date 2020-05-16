@@ -6,15 +6,25 @@
 //tough bird) and return an integer representing the points scored for that hit.
 int Bird::hit()
 {
-	return getLives()- 1;
+	//Decrease the number of lives
+	this->lives--;
+	//check if hit killed the bird
+	if (this->lives == 0)
+	{
+		kill();
+		//bonus?
+		if (this->bonus)
+			return this->score + this->bonus;
+	}
+
+	return getScore();
 }
 
  Bird::Bird()
 {
 	 //The initial position of the bird is anywhere along the left side the screen
-	 position.setX(-150);
+	 position.setX(-200);
 	 position.setY(random(-150, 150));
-
 	 //The horizontal component of the velocity should be between 3 and 6 pixels/frame.
 	 velocity.setDx(random(3, 6));
 	//If the bird starts on the top half of the screen, it should have a generally 
@@ -31,28 +41,5 @@ int Bird::hit()
 
  void BirdStandard::draw()
  {
-	 drawCircle(position, 15);
+	 drawCircle(getPoint(), 15);
  }
-
- /*
-	 //Standard Bird
-	 if (birdType = 0)
-	 {
-		this->lives = 1;
-		this->score = 1;
-		this->bonus = 0;
-	 }
-	 //Tough Bird
-	 else if (birdType = 1)
-	 {
-		 this->lives = 3;
-		 this->score = 1;
-		 this->bonus = 2;
-	 }
-	 //Sacred Bird
-	 else
-	 {
-		 this->lives = 1;
-		 this->score = -10;
-		 this->bonus = 0;
-	 }*/

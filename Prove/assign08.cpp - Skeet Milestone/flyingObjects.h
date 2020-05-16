@@ -60,7 +60,6 @@ protected:
 	int lives;
 	int score;
 	int bonus;
-
 };
 
 #endif

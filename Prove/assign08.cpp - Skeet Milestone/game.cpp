@@ -29,8 +29,8 @@ Game::Game(Point tl, Point br)
 	score = 0;
 
 	// TODO: Set your bird pointer to a good initial value (e.g., NULL)
-	Bird* bird = NULL;
-	
+	bird = NULL;
+
 }
 
 /****************************************
@@ -40,8 +40,11 @@ Game :: ~Game()
 {
 	// TODO: Check to see if there is currently a bird allocated
 	//       and if so, delete it.
-	if (bird->isAlive())
+	if (bird != NULL)
+	{
 		delete bird;
+		bird = NULL;
+	}
 }
 
 /***************************************
@@ -93,7 +96,7 @@ void Game::advanceBird()
 	if (bird == NULL)
 	{
 		// there is no bird right now, possibly create one
-		Bird* bird = NULL;
+		
 		// "resurrect" it will some random chance
 		if (random(0, 30) == 0)
 		{
@@ -129,8 +132,7 @@ Bird* Game::createBird()
 	Bird* newBird = NULL;
 
 	// TODO: Fill this in
-	
-
+	newBird = new BirdStandard();
 	return newBird;
 }
 
@@ -192,10 +194,9 @@ void Game::cleanUpZombies()
 	if (bird != NULL && !bird->isAlive())
 	{
 		// the bird is dead, but the memory is not freed up yet
-
 		// TODO: Clean up the memory used by the bird
-
-
+		delete bird;
+		bird = NULL;
 	}
 
 	// Look for dead bullets
@@ -257,11 +258,13 @@ void Game::handleInput(const Interface & ui)
 void Game::draw(const Interface & ui)
 {
 	// draw the bird
-	
+
 	// TODO: Check if you have a valid bird and if it's alive
 	// then call it's draw method
-
-
+	if (bird != NULL && bird->isAlive())
+	{
+		bird->draw();
+	}
 
 	// draw the rifle
 	rifle.draw();
