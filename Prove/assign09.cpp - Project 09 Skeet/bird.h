@@ -18,6 +18,7 @@ public:
 	Bird();
 	~Bird() {}
 	int hit();
+	
 private:
 
 };

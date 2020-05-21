@@ -57,6 +57,17 @@ int Bird::hit()
 	 //A bonus of 2 points is awarded if it is destroyed. 
 	 setLives(3);
 	 setBonus(2);
+	 //To give the user a greater chance to hit the Tough Bird, it should move more 
+     // slowly than the others. In particular, its horizontal velocity should be taken
+     //  from the range : 2 to 4, and it's vertical velocity from the range -3 to +3.
+	 velocity.setDx(random(2, 4));
+	 if (position.getY() >= 0)
+	 {
+		 velocity.setDy(random(-3, -1));
+	 }
+	 else
+		 velocity.setDy(random(1, 3));
+
  }
 
  void BirdTough::draw()
@@ -67,6 +78,7 @@ int Bird::hit()
 	 drawToughBird(getPoint(),15,getLives());
  }
 
+ 
 /*********************************************
 * BirdTough Class
 *********************************************/
@@ -82,3 +94,5 @@ int Bird::hit()
 	 //A drawSacredBird function is included in the uiDraw library to assist you.
 	 drawSacredBird(getPoint(), 15);
  }
+
+

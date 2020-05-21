@@ -132,6 +132,9 @@ Bird* Game::createBird()
 	Bird* newBird = NULL;
 
 	// TODO: Fill this in
+	//A delay of up to 1 second should be introduced before the first bird is
+	//released or after each round before the next one is released.
+	
 	int birdType = random(0, 3);
 	switch (birdType)
 	{
