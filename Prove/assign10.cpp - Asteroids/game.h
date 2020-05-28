@@ -3,24 +3,22 @@
  * Author: Elias Ramirez
  *
  *************************************************************/
-
 #ifndef GAME_H
 #define GAME_H
+
 #include <iostream>
 #include <vector>
 #include "uiDraw.h"
 #include "uiInteract.h"
 #include "point.h"
 #include "velocity.h"
-#include "rifle.h"
-
- // TODO: include your bullet and bird classes
-#include"flyingObjects.h"
-#include "bird.h"
+#include "flyingObject.h"
 #include "bullet.h"
+#include "ship.h"
+#include "rocks.h"
 
 #define CLOSE_ENOUGH 15
-
+#define OFF_SCREEN_BORDER_AMOUNT 5
 
 /*****************************************
  * GAME
@@ -56,6 +54,12 @@ public:
 	 *********************************************/
 	void draw(const Interface & ui);
 
+	/*********************************************
+    * Function: getClosestDistance
+    * Description: draws everything for the game.
+    *********************************************/
+	float getClosestDistance(const FlyingObject &obj1, const FlyingObject &obj2) const;
+
 private:
 	// The coordinates of the screen
 	Point topLeft;
@@ -63,23 +67,23 @@ private:
 
 	int score;
 
-	Rifle rifle;
+	//Rifle rifle; <- Maybe the Ship? 
 	std::vector<Bullet> bullets;
 
-	// TODO: declare your bird here (e.g., "Bird * bird;")
-	Bird * bird;
+	//Rock Vector and object created
+	std::vector<Rock*> rocks;
+	Rock * rock;
 
 	/*************************************************
 	 * Private methods to help with the game logic.
 	 *************************************************/
 	bool isOnScreen(const Point & point);
 	void advanceBullets();
-	void advanceBird();
-	Bird* createBird();
+	void advanceRock();
+	Rock* createRock();
 
 	void handleCollisions();
 	void cleanUpZombies();
 };
 
 #endif /* GAME_H */
-
