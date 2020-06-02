@@ -63,13 +63,15 @@ void swapValues(T &v1, T &v2)
 //    range of a list of integers. You need to change it to a function 
 //    template that can find the smallest value in a list of any type.
 
-template <class T>
-T indexOfSmallest(const T array[], T startIndex, T size)
-{
-	T min = array[startIndex];
-	T indexOfMin = startIndex;
 
-	for (T index = startIndex + 1; index < size; index++)
+template <class T1, class T2>
+
+int indexOfSmallest(const T1 array[], T2 startIndex, T2 size)
+{
+	T1 min = array[startIndex];
+	T2 indexOfMin = startIndex;
+
+	for (T2 index = startIndex + 1; index < size; index++)
 	{
 		if (array[index] < min)
 		{
@@ -104,18 +106,18 @@ const int SIZE = 5;*/
 //     to sort it.You need to change this to a function template so it can 
 //     sort a list of any type.
 
-template <class T>
-void sort(T array[], T size)
-{
-	T indexOfNextSmallest;
+template <class T1, class T2>
 
-	for (T index = 0; index < size - 1; index++)
+void sort(T1 array[], T2 size)
+{
+	T2 indexOfNextSmallest;
+
+	for (T2 index = 0; index < size - 1; index++)
 	{
 		indexOfNextSmallest = indexOfSmallest(array, index, size);
 		swapValues(array[index], array[indexOfNextSmallest]);
 	}
 }
-
 const int SIZE = 5;
 
 /********************************************************
